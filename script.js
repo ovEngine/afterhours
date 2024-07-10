@@ -1,17 +1,12 @@
-
 document.addEventListener('DOMContentLoaded', function() {
-  // Specify the old phone number
+  // Specify the old and new phone numbers
   var oldPhoneNumber = '123-456-7890';
-  
-  // Specify the new phone number
   var newPhoneNumber = '987-654-3210';
   
-  // Function to check the time and update phone numbers
+  // Function to update phone numbers
   function updatePhoneNumbers() {
     // Get the current date and time in CST
     var currentDateTime = new Date().toLocaleString('en-US', { timeZone: 'America/Chicago' });
-    
-    // Extract the hour from the current date and time
     var currentHour = new Date(currentDateTime).getHours();
     
     // Check if the current hour is after 5 PM (17:00)
@@ -20,7 +15,7 @@ document.addEventListener('DOMContentLoaded', function() {
       var elements = document.querySelectorAll('body *');
       
       elements.forEach(function(element) {
-        if (element.innerHTML.includes(oldPhoneNumber)) {
+        if (element.innerHTML.includes(oldPhoneNumber) && element.children.length === 0) {
           // Replace the old phone number with the new phone number
           element.innerHTML = element.innerHTML.replace(oldPhoneNumber, newPhoneNumber);
         }
